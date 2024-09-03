@@ -11,17 +11,18 @@ const NotFoundPage = lazy(
   () => import('./pages/NotFoundPage/NotFoundPage.jsx')
 );
 
+
+
 export default function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/add-movie" element={<AddMoviePage />} />
-        <Route path="/movies/:id" element={<MovieDetailsPage />} />
-        <Route path="/movies/edit/:id" element={<EditMoviePage />} /> 
-        <Route path="/1" element={<NotFoundPage />} />
-    
-      </Routes>
-    </Layout>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="add-movie" element={<AddMoviePage />} />
+        <Route path="movies/:id" element={<MovieDetailsPage />} />
+        <Route path="movies/edit/:id" element={<EditMoviePage />} />
+        <Route path="*" element={<NotFoundPage />} /> {/* Catch-all route for 404 */}
+      </Route>
+    </Routes>
   );
 }
